@@ -1,5 +1,11 @@
 FROM mysql:8.0
 
-COPY ./mysql.sql /tmp
+# Set environment variables for MySQL
+ENV MYSQL_ROOT_PASSWORD= rootpass123  # Change to a secure password, e.g., 'rootpass123'
+ENV MYSQL_DATABASE= clo835_db       # e.g., 'clo835_db'
 
-CMD [ "mysqld", "--init-file=/tmp/mysql.sql" ]
+# Copy SQL init script if you have one (optional, but your repo has mysql.sql)
+COPY mysql.sql /docker-entrypoint-initdb.d/
+
+# Expose MySQL port (default)
+EXPOSE 3306
