@@ -35,8 +35,8 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/clo835-web-repo:latest
-            ${{ steps.login-ecr.outputs.registry }}/clo835-web-repo:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/clo835-app:latest
+            ${{ steps.login-ecr.outputs.registry }}/clo835-app:${{ github.sha }}
 
       - name: Build and push mysql image
         uses: docker/build-push-action@v6
@@ -45,5 +45,5 @@ jobs:
           file: Dockerfile_mysql
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/clo835-mysql-repo:latest
-            ${{ steps.login-ecr.outputs.registry }}/clo835-mysql-repo:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/clo835-mysql:latest
+            ${{ steps.login-ecr.outputs.registry }}/clo835-mysql:${{ github.sha }}
